@@ -2,8 +2,13 @@
 A console-based calculator project written in C#
 
 ## TO DO
-### Operations to implement :
--[+][-][*][/][=] 
--[√][%]
--[M+][M-][MRC]
--[sign change]
+
+- [ ] Basic rithmetic operations | + | - | * | / | = |
+- [ ] More advenced operations | √ | % |
+- [ ] Memory acces 
+    - [ ] Implement | M+  | (Add to memory)
+    - [ ] Implement | M-  | (Subtract from memory)
+    - [ ] Implement | MRC | (Memory Recall/Clear)
+- [ ] sign change 
+
+## DONE
