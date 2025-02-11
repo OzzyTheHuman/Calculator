@@ -1,7 +1,7 @@
 # Calculator
 A console-based calculator project written in C#
 
-## TO DO
+## TODO LIST
 
 - [ ] Basic rithmetic operations | + | - | * | / | = |
 - [ ] More advenced operations | √ | % |
@@ -11,3 +11,4 @@ A console-based calculator project written in C#
     - [ ] Implement | MRC | (Memory Recall)
 - [ ] Sign change 
 - [ ] English language support 
+- [ ] Mouse support
