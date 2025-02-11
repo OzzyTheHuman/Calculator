@@ -8,7 +8,5 @@ A console-based calculator project written in C#
 - [ ] Memory acces 
     - [ ] Implement | M+  | (Add to memory)
     - [ ] Implement | M-  | (Subtract from memory)
-    - [ ] Implement | MRC | (Memory Recall/Clear)
+    - [ ] Implement | MRC | (Memory Recall)
 - [ ] sign change 
-
-## DONE
