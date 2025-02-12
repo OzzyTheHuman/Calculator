@@ -8,14 +8,14 @@ You do not need .NET runtime. Simply unzip newest version from Releases and you 
 
 ## TODO LIST
 
-- [x] Basic arithmetic operations | + | - | * | / |   ***v.1.0***
+- [x] Basic arithmetic operations | + | - | * | / |&nbsp;&nbsp; ***v.1.0***
 - [ ] More advenced operations | √ | % |
 - [ ] Memory acces 
-    - [ ] Implement | M+  | (Add to memory)
-    - [ ] Implement | M-  | (Subtract from memory)
+    - [ ] Implement | M+&nbsp; | (Add to memory)
+    - [ ] Implement | M-&nbsp; | (Subtract from memory)
     - [ ] Implement | MRC | (Memory Recall)
 - [ ] Sign change 
 - [ ] Multi-language support 
-    - [x] Polish   ***v.1.0***
+    - [x] Polish&nbsp;&nbsp; ***v.1.0***
     - [ ] English
 - [ ] Mouse support
