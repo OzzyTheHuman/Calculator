@@ -1,9 +1,14 @@
-﻿namespace Calculator
+﻿using System.ComponentModel;
+using System.Text;
+
+namespace Calculator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
             GetGrittings();
             GetOperations();
 
@@ -14,7 +19,10 @@
             Console.WriteLine("\t\t\tCalculator by Ozzy");
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------------");
-            Console.WriteLine("Obsługiwane operacje |+| |-| |*| |/|, 'CTRL + C' aby zakończyć");
+            Console.WriteLine("> Obsługiwane operacje |+| |-| |*| |/| |√|");
+            Console.WriteLine("> Aby obliczyć pierwiastek kwadratowy wystarczy '√' lub 'sqrt'");
+            Console.WriteLine("> Aby wkleić tekst należy wcisnąć prawy przycisk myszy");
+            Console.WriteLine("> 'CTRL + C' aby zakończyć");
             Console.WriteLine();
             Console.WriteLine("1. Podaj liczbę + ENTER");
             Console.WriteLine("2. Podaj operację + ENTER");
@@ -26,6 +34,7 @@
         }
         public static void GetOperations()
         {
+            bool isPercentage;
             while (true)
             {
                 decimal number = GetNumber();
@@ -35,10 +44,8 @@
                 Console.WriteLine("\n\n---------------------------------------------------------------");
                 Console.WriteLine("Podaj liczbę, aby kontynuować lub 'CTRL + C', aby zakończyć.");
                 Console.WriteLine();
-
             }
         }
-
         public static decimal GetNumber()
         {
             bool isValidInput = false;
@@ -62,13 +69,18 @@
         public static decimal GetResult(decimal number)
         {
             decimal number2;
-
             //Check if the received string is correct, if not, ask again
             while (true)        
             {
                 Console.Write("\t");
-                string operation = Console.ReadLine();
-
+                string? input = Console.ReadLine();
+                
+                if (input == null)
+                {
+                    Console.WriteLine("- Nie można odczytać pustej wartości, spróbuj ponownie -");
+                    continue;
+                }
+                string operation = input.ToLower().Trim();
                 try
                 {
                     switch (operation)
@@ -90,6 +102,9 @@
                                 continue;
                             }
                             return number / number2;
+                        case "√":
+                        case "sqrt":
+                            return (decimal)Math.Sqrt((double)number);
                         default:
                             Console.WriteLine($"- Nieobsługiwana operacja, spróbuj ponownie -");
                             break;
