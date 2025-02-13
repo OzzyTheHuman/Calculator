@@ -1,14 +1,14 @@
 # Calculator
-A console-based calculator project written in C#. Right now only for windows.
+A console-based calculator project written in C#. This application is developed using .NET 8. Right now only for windows.
 
 
 ## Instalation
-You do not need .NET runtime. Simply unzip newest version from Releases and you are good to go.
+You do not need .NET runtime. Simply unzip newest version from **Releases**, locate **Calculator.exe** file and you are good to go.
 
 
 ## TODO LIST
 
-- [x] Basic arithmetic operations | + | - | * | / |&nbsp;&nbsp; ***v.1.0***
+- [x] Basic arithmetic operations | + | - | * | ÷ |&nbsp;&nbsp; ***v.1.0***
 - [ ] More advenced operations | √ | % |
 - [ ] Memory acces 
     - [ ] Implement | M+&nbsp; | (Add to memory)
