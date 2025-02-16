@@ -200,7 +200,7 @@ namespace Calculator
                         case "÷":
                             return checked(value1 / value2);
                         case "%":
-                            return checked(value1 / 100 * value2);
+                            return checked(value1 * value2 / 100);
                         case "^":
                             double value1d = Convert.ToDouble(value1);
                             double value2d = Convert.ToDouble(value2);
