@@ -6,14 +6,14 @@ A console-based calculator project written in C#.<br />This application is devel
 You do not need .NET runtime.<br />Simply unzip newest version from **Releases**, locate **Calculator.exe** file and you are good to go.
 
 ## Quick disclaimer how % works
-**Scenario 1: % used as a operation**
+**Scenario 1: % used as a operation**<br />
 Lets say, you type **55 % 10**<br />How it will be handled ?
 - Get value1 = 55
 - Get operation = "%"
 - Get value2 = 10 ( isPercentage = false )
 - Calculated value2 = 55 * (10 / 100) = 5.5
 
-**Scenario 2: % used in calcultations**
+**Scenario 2: % used in calcultations**<br />
 Lets say, you type **55 * 10%**<br />How it will be handled ?
 - Get value1 = 55
 - Get operation = "*"
