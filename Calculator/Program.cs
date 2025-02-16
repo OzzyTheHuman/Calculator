@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Dynamic;
 using System.Text;
 
 namespace Calculator
@@ -9,112 +11,247 @@ namespace Calculator
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
-            GetGrittings();
-            GetOperations();
 
+            GetCalculate();
+            Console.ReadKey();
         }
-        public static void GetGrittings()
+        public static void GetCalculate()
         {
+            GetStartingWords();
+            while (true)
+            {
+                decimal value1 = GetNumber();
+                string operation1 = GetOperation();
+                decimal value2;
+
+                decimal result;
+                if (operation1 == "√" || operation1 == "sqrt")
+                {
+                    Console.CursorTop--;
+                    Console.WriteLine("\t     √   ");
+
+                    while (true)
+                    {
+                        try
+                        {
+                            result = (decimal)Math.Sqrt((double)value1);
+                            break;
+                        }
+                        catch (OverflowException)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("    - Błąd pierwiastkowania. Podaj inną liczbę -");
+                            Console.ForegroundColor = ConsoleColor.White;
+
+                            value1 = GetNumber();
+                        }
+                    }
+                }
+                else if (operation1 == "/" || operation1 == "÷")
+                {
+                    Console.CursorTop--;
+                    Console.WriteLine("\t     ÷   ");
+                    Console.CursorTop--;
+                    value2 = GetPercentage(out bool isPercentage);
+
+                    if (isPercentage)
+                    {
+                        value2 = value1 * (value2 / 100);
+                        result = GetResult(value1, value2, operation1);
+                    }
+                    else
+                    {
+                        result = GetResult(value1, value2, operation1);
+                    }
+                }
+                else
+                {
+                    Console.CursorTop--;
+                    value2 = GetPercentage(out bool isPercentage);
+
+                    if (isPercentage)
+                    {
+                        value2 = value1 * (value2 / 100);
+                        result = GetResult(value1, value2, operation1);
+                    }
+                    result = GetResult(value1, value2, operation1);
+                }
+                GetEndingWords(result);
+            }
+        }
+        public static void GetStartingWords()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
-            Console.WriteLine("\t\t\tCalculator by Ozzy");
+            Console.Write("\t\t\tCalculator by ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Ozzy");
+            Console.ForegroundColor = ConsoleColor.White;
+
             Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------------");
-            Console.WriteLine("> Obsługiwane operacje |+| |-| |*| |/| |√|");
-            Console.WriteLine("> Aby obliczyć pierwiastek kwadratowy wystarczy '√' lub 'sqrt'");
+            Console.Write("> Obsługiwane operacje ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("|+| |-| |*| |÷| |√| |%| |^|\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("> Aby obliczyć pierwiastek kwadratowy wystarczy ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("'√' ");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("lub ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("'sqrt'\n");
+
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("> Aby wkleić tekst należy wcisnąć prawy przycisk myszy");
-            Console.WriteLine("> 'CTRL + C' aby zakończyć");
+            Console.Write("> ");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("'CTRL + C' ");
+
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("aby zakończyć");
             Console.WriteLine();
             Console.WriteLine("1. Podaj liczbę + ENTER");
             Console.WriteLine("2. Podaj operację + ENTER");
             Console.WriteLine("3. Podaj liczbę + ENTER");
             Console.WriteLine("4. Wynik");
-            Console.WriteLine();
             Console.WriteLine("---------------------------------------------------------------");
             Console.WriteLine();
         }
-        public static void GetOperations()
+        public static void GetEndingWords(decimal result)
         {
-            bool isPercentage;
-            while (true)
-            {
-                decimal number = GetNumber();
-                decimal result = GetResult(number);
-
-                Console.Write($"\n    =\t{result}");
-                Console.WriteLine("\n\n---------------------------------------------------------------");
-                Console.WriteLine("Podaj liczbę, aby kontynuować lub 'CTRL + C', aby zakończyć.");
-                Console.WriteLine();
-            }
+            Console.WriteLine($"\t\t\b\b\b=  {result}");
+            Console.WriteLine("\n---------------------------------------------------------------\n");
         }
         public static decimal GetNumber()
         {
             bool isValidInput = false;
             decimal number = 0;
 
-            //Check if the received number is correct, if not, ask again
             while (!isValidInput)
             {
-                Console.Write("\t");
-                isValidInput = decimal.TryParse(Console.ReadLine(), out decimal result);
+                Console.Write("\t\t");
+                isValidInput = decimal.TryParse(Console.ReadLine(), out number);
+
                 if (!isValidInput)
                 {
-                    Console.Write("- Nieobsługiwany format liczby, spróbuj ponownie -");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("    - Nieobsługiwany format liczby spróbuj ponownie -");
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine();
                 }
-                number = result;
             }
             return number;
         }
-        
-        public static decimal GetResult(decimal number)
+        public static string GetOperation()
         {
-            decimal number2;
-            //Check if the received string is correct, if not, ask again
-            while (true)        
+            while (true)
             {
-                Console.Write("\t");
-                string? input = Console.ReadLine();
-                
-                if (input == null)
+                Console.Write("\t\t\b\b\b");
+                string input = Console.ReadLine()!;
+                switch (input)
                 {
-                    Console.WriteLine("- Nie można odczytać pustej wartości, spróbuj ponownie -");
-                    continue;
+                    case "+":
+                        return "+";
+                    case "-":
+                        return "-";
+                    case "*":
+                        return "*";
+                    case "/":
+                    case "÷":
+                        return "/";
+                    case "√":
+                    case "sqrt":
+                        return "√";
+                    case "%":
+                        return "%";
+                    case "^":
+                        return "^";
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"    - Nieobsługiwana operacja, spróbuj ponownie -");
+                        Console.ForegroundColor = ConsoleColor.White;
+                        break;
                 }
-                string operation = input.ToLower().Trim();
+            }
+        }
+        public static decimal GetResult(decimal value1, decimal value2, string operation)
+        {
+            while (true)
+            {
                 try
                 {
                     switch (operation)
                     {
                         case "+":
-                            number2 = GetNumber();
-                            return checked(number + number2);
+                            return checked(value1 + value2);
                         case "-":
-                            number2 = GetNumber();
-                            return checked(number - number2);
+                            return checked(value1 - value2);
                         case "*":
-                            number2 = GetNumber();
-                            return checked(number * number2);
+                            return checked(value1 * value2);
                         case "/":
-                            number2 = GetNumber();
-                            if (number2 == 0)
-                            {
-                                Console.WriteLine("- Błąd przy dzieleniu przez zero. Wybierz inną operacje -");
-                                continue;
-                            }
-                            return number / number2;
-                        case "√":
-                        case "sqrt":
-                            return (decimal)Math.Sqrt((double)number);
-                        default:
-                            Console.WriteLine($"- Nieobsługiwana operacja, spróbuj ponownie -");
-                            break;
+                        case "÷":
+                            return checked(value1 / value2);
+                        case "%":
+                            return checked(value1 / 100 * value2);
+                        case "^":
+                            double value1d = Convert.ToDouble(value1);
+                            double value2d = Convert.ToDouble(value2);
+                            return checked((decimal)Math.Pow(value1d, value2d));
                     }
                 }
                 catch (OverflowException)
                 {
-                    Console.WriteLine("- Wystąpiło przepełnienie. Spróbuj podać mniejszą liczbę -");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("    - Wystąpiło przepełnienie. Podaj mniejszą liczbę-");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    value2 = GetNumber();
+                }
+                catch (DivideByZeroException)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("    - Błąd dzielenia przez 0. Podaj inną liczbę -");
+                    Console.ForegroundColor = ConsoleColor.White;
+
+                    value2 = GetNumber();
                 }
             }
+        }
+        public static decimal GetPercentage(out bool isPercentage)
+        {
+            bool isValidInput = false;
+            isPercentage = false;
+            decimal number = 0;
+
+            while (!isValidInput)
+            {
+                Console.Write("\t\t");
+                string input = Console.ReadLine()!;
+
+                if (input.Contains('%'))
+                {
+                    input = input.Replace('%', ' ').Trim();
+                    isPercentage = true;
+                }
+
+                isValidInput = decimal.TryParse(input, out number);
+                if (!isValidInput)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("    - Nieobsługiwany format liczby spróbuj ponownie -");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine();
+                }
+            }
+            return number;
         }
     }
 }
