@@ -7,14 +7,14 @@ You do not need .NET runtime.<br />Simply unzip newest version from **Releases**
 
 ## Quick disclaimer how % works
 **Scenario 1: % used as a operation**<br />
-Lets say, you type **55 % 10**<br />How it will be handled ?
+Lets say, you type **55 % 10** How it will be handled ?
 - Get value1 = 55
 - Get operation = "%"
 - Get value2 = 10 ( isPercentage = false )
 - Calculated value2 = 55 * (10 / 100) = 5.5
 
 **Scenario 2: % used in calcultations**<br />
-Lets say, you type **55 * 10%**<br />How it will be handled ?
+Lets say, you type **55 * 10%** How it will be handled ?
 - Get value1 = 55
 - Get operation = "*"
 - Get value2 = 10% ( isPercentage = true )
