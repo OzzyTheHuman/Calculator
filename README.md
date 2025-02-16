@@ -13,7 +13,7 @@ Lets say, you type **55 % 10**. How it will be handled ?
 - Get value2 = 10 ( isPercentage = false )
 - Calculated value2 = 55 * (10 / 100) = 5.5
 
-**Scenarion 2: % used in calcultations**
+**Scenario 2: % used in calcultations**
 Lets say, you type **55 * 10%**. How it will be handled ?
 - Get value1 = 55
 - Get operation = "*"
@@ -29,7 +29,7 @@ Therefore, if you're looking to find a percentage of a number – for example, c
 ## TODO LIST
 
 - [x] Basic arithmetic operations | + | - | * | ÷ |&nbsp;&nbsp; ***v.1.0***
-- [x] More advenced operations | √ | % | ^ |&nbsp;&nbsp; ***v.2.0***
+- [x] More advenced operations | √ | % | ^ |&nbsp;&nbsp; ***v.2.1***
 - [ ] Memory acces 
     - [ ] Implement | M+&nbsp; | (Add to memory)
     - [ ] Implement | M-&nbsp; | (Subtract from memory)
