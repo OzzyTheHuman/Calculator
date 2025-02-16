@@ -1,22 +1,20 @@
 # Calculator
-A console-based calculator project written in C#. This application is developed using .NET 8. Right now only for windows.
+A console-based calculator project written in C#.<br />This application is developed using .NET 8. Right now only for windows.
 
 
 ## Instalation
-You do not need .NET runtime. Simply unzip newest version from **Releases**, locate **Calculator.exe** file and you are good to go.
+You do not need .NET runtime.<br />Simply unzip newest version from **Releases**, locate **Calculator.exe** file and you are good to go.
 
 ## Quick disclaimer how % works
 **Scenario 1: % used as a operation**
-Lets say, you type **55 % 10**
-How it will be handled ?
+Lets say, you type **55 % 10**<br />How it will be handled ?
 - Get value1 = 55
 - Get operation = "%"
 - Get value2 = 10 ( isPercentage = false )
 - Calculated value2 = 55 * (10 / 100) = 5.5
 
 **Scenario 2: % used in calcultations**
-Lets say, you type **55 * 10%**
-How it will be handled ?
+Lets say, you type **55 * 10%**<br />How it will be handled ?
 - Get value1 = 55
 - Get operation = "*"
 - Get value2 = 10% ( isPercentage = true )
