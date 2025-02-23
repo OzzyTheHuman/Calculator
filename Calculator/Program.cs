@@ -246,7 +246,7 @@ namespace Calculator
                     case "÷":
                         return "/";
                     case "√":
-                    case "sqrt":
+                    case "SQRT":
                         return "√";
                     case "^":
                         return "^";
