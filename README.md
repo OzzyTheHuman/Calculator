@@ -12,10 +12,10 @@ Feel free to check my source code; the worst thing you might find is some messy 
 - [x] More advanced operations | √ | % | ^ |&nbsp;&nbsp; ***v2.1***
 - [x] Memory access - | M |&nbsp;&nbsp; ***v3.0***
 - [x] Sign change - | ! |&nbsp;&nbsp; ***v3.0***
-- ~~ [ ] Multi-language support ~~&nbsp;&nbsp; ***scrapped***
+- ~~ Multi-language support ~~&nbsp;&nbsp; ***scrapped***
     - [x] Polish&nbsp;&nbsp; ***v1.0***
-    - ~~ [ ] English ~~&nbsp;&nbsp; ***scrapped***
-- ~~ [ ] Mouse support ~~&nbsp;&nbsp; ***scrapped***
+    - ~~ English ~~&nbsp;&nbsp; ***scrapped***
+-  ~~ Mouse support ~~&nbsp;&nbsp; ***scrapped***
 
 ## Why Some Features Were Scrapped
 With the knowledge I have today, I see that I should rewrite a big portion of my code. However, I have decided against this, wanting to keep this code as a history of how my skills in programming and problem-solving have evolved. <br />
